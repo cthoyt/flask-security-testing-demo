@@ -29,6 +29,7 @@ class TestApplication(unittest.TestCase):
         self.fd, self.path = tempfile.mkstemp()
         self.connection = 'sqlite:///' + self.path
 
+        # Use subclass of flask.Flask to make some of this code a bit prettier
         self.app = FlaskDemo(self.connection)
         self.app.secret_key = 'testing, so why bother with a secret key?'
         self.app.register_blueprint(api_blueprint)
@@ -46,7 +47,6 @@ class TestApplication(unittest.TestCase):
         self.app.datastore.commit()
 
         # Create a test client
-        # self.client = FlaskClient(self.app)
         self.client = self.app.test_client()
 
         # push the context

@@ -43,12 +43,3 @@ class FlaskDemo(Flask):
     def create_all(self):
         """Creates all tables"""
         Base.metadata.create_all()
-
-
-def create_application(connection: str) -> Flask:
-    """Creates an application. Still needs views to be registered later
-
-    :param connection: The SQLAlchemy connection string
-    :return: A Flask application
-    """
-    return FlaskDemo(connection)
